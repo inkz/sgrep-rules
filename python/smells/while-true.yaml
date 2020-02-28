@@ -1,0 +1,12 @@
+rules:
+  - id: infinite-loop
+    patterns:
+      - pattern-not-inside: |
+          def __main__(...):
+              ...
+      - pattern: |
+          while True:
+              ...
+    message: "Infinite loop detected; this code block will not terminate."
+    languages: [python]
+    severity: ERROR
