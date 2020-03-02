@@ -1,9 +1,10 @@
 rules:
   - id: response_contains_unsanitized_input
     patterns:
-      - pattern: |
+      - pattern-inside: |
           $X = request.args.get(...)
-          flask.make_response($Y.$Z($X))
+          ...
+      - pattern: flask.make_response($A.$B($X))
     message: Flask response reflects unsanitized user input.
     languages: [python]
     severity: WARNING
